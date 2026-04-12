@@ -1,0 +1,149 @@
+﻿/* components/layout/layout.css */
+
+.dashboard-shell {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background: #f3f4f6;
+}
+
+.dashboard-sidebar {
+  width: 280px;
+  min-height: 100vh;
+  flex-shrink: 0;
+  background: #ffffff;
+  border-right: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 20px;
+  box-shadow: inset -1px 0 0 rgb(229 231 235 / 0.5);
+}
+
+.dashboard-sidebar-header {
+  margin-bottom: 24px;
+}
+
+.dashboard-sidebar-header h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: #111827;
+}
+
+.dashboard-sidebar-header p {
+  font-size: 0.95rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+.dashboard-sidebar-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.dashboard-nav-link {
+  display: block;
+  padding: 0.95rem 1.1rem;
+  border-radius: 0.85rem;
+  color: #374151;
+  font-size: 0.98rem;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.dashboard-nav-link:hover {
+  background: #f8fafc;
+  color: #111827;
+}
+
+.dashboard-nav-link.active {
+  background: #eff6ff;
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.dashboard-sidebar-footer {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+  color: #4b5563;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.dashboard-footer-note {
+  margin-top: 0.5rem;
+  color: #1f2937;
+  font-weight: 500;
+}
+
+.dashboard-main {
+  flex: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f8fafc;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.dashboard-header-title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.dashboard-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dashboard-user-info {
+  text-align: right;
+}
+
+.dashboard-user-info p:first-child {
+  margin: 0;
+  font-weight: 600;
+  color: #111827;
+}
+
+.dashboard-user-info p:last-child {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+.dashboard-logout-button {
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  color: #111827;
+  padding: 0.65rem 1rem;
+  border-radius: 0.75rem;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
+}
+
+.dashboard-logout-button:hover {
+  background: #f3f4f6;
+  border-color: #cbd5e1;
+}
+
+.dashboard-content {
+  flex: 1;
+  padding: 1.5rem;
+}
