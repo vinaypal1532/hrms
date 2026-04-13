@@ -21,10 +21,10 @@ export default function Sidebar() {
 
   return (
     <aside className="dashboard-sidebar">
-      <div className="dashboard-sidebar-header">
+      {/* <div className="dashboard-sidebar-header">
         <h2>HRMS Portal</h2>
         <p>Admin Panel</p>
-      </div>
+      </div> */}
 
       <nav className="dashboard-sidebar-nav">
         {menu.map((item) => (

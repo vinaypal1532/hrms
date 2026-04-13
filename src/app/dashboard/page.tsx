@@ -10,12 +10,11 @@ export default function DashboardPage() {
   const router = useRouter();
 
   useEffect(() => {
-    if (!getToken()) {
-      router.push("/auth/login");
-    }
+    // if (!getToken()) {
+    //   router.push("/auth/login");
+    // }
   }, []);
 
-  
   return (
     <div>
       <h2 className="text-2xl font-semibold mb-1">Dashboard</h2>
@@ -25,10 +24,30 @@ export default function DashboardPage() {
 
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <StatsCard title="Total Staff" value="5" subtitle="5 active" color="bg-blue-500" />
-        <StatsCard title="Today's Attendance" value="3" subtitle="60% present" color="bg-green-500" />
-        <StatsCard title="Pending Payrolls" value="0" subtitle="To be processed" color="bg-yellow-500" />
-        <StatsCard title="Active Candidates" value="4" subtitle="In pipeline" color="bg-purple-500" />
+        <StatsCard
+          title="Total Staff"
+          value="5"
+          subtitle="5 active"
+          color="bg-blue-500"
+        />
+        <StatsCard
+          title="Today's Attendance"
+          value="3"
+          subtitle="60% present"
+          color="bg-green-500"
+        />
+        <StatsCard
+          title="Pending Payrolls"
+          value="0"
+          subtitle="To be processed"
+          color="bg-yellow-500"
+        />
+        <StatsCard
+          title="Active Candidates"
+          value="4"
+          subtitle="In pipeline"
+          color="bg-purple-500"
+        />
       </div>
 
       {/* Bottom Sections */}
