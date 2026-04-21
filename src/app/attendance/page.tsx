@@ -1,4 +1,4 @@
-import StatCardGrid from "@/components/CardGrid";
+import StatCardGrid from "@/components/StatCardGrid";
 import React from "react";
 
 const page = () => {
@@ -67,6 +67,26 @@ const page = () => {
             </thead>
 
             <tbody className="text-black">
+              <tr className="border-t border-gray-400 hover:bg-gray-50">
+                <td className="px-6 py-4 flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-sm font-semibold">
+                    JS
+                  </div>
+                  <div>
+                    <p className="font-medium">John Smith</p>
+                    <p className="text-gray-500 text-xs">EMP001</p>
+                  </div>
+                </td>
+                <td className="px-6 py-4">2026-03-28</td>
+                <td className="px-6 py-4">09:00</td>
+                <td className="px-6 py-4">18:00</td>
+                <td className="px-6 py-4">9h</td>
+                <td className="px-6 py-4">
+                  <span className="px-3 py-1 text-xs rounded-full bg-green-100 text-green-600">
+                    present
+                  </span>
+                </td>
+              </tr>
               <tr className="border-t border-gray-400 hover:bg-gray-50">
                 <td className="px-6 py-4 flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-sm font-semibold">
