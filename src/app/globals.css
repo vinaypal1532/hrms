@@ -37,3 +37,123 @@ body {
 *, *::before, *::after {
   box-sizing: inherit;
 }
+.dashboard-sidebar {
+  width: 240px;
+  background: #1f2937;
+  color: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* 🔥 Reduce spacing here */
+.dashboard-sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px; /* 👈 reduced from big spacing */
+  padding: 10px;
+}
+
+/* Menu item */
+.dashboard-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* icon + text spacing */
+  padding: 8px 12px; /* 👈 reduced padding */
+  border-radius: 6px;
+  text-decoration: none;
+  color: #d1d5db;
+  font-size: 14px; /* slightly compact */
+  transition: all 0.2s ease;
+}
+
+/* Icon size */
+.dashboard-nav-link .icon {
+  font-size: 18px;
+}
+
+/* Hover */
+.dashboard-nav-link:hover {
+  background: #374151;
+  color: #fff;
+}
+
+/* Active */
+.dashboard-nav-link.active {
+  background: #2563eb;
+  color: #fff;
+}
+
+/* Footer */
+.dashboard-sidebar-footer {
+  padding: 12px;
+  font-size: 12px;
+  color: #9ca3af;
+}
+/* 🔥 Badge styles */
+.badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  text-transform: capitalize;
+}
+
+.badge.casual {
+  background: #f3e8ff;
+  color: #7c3aed;
+}
+
+.badge.sick {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.badge.earned {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+/* 🔥 Status */
+.status {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  text-transform: capitalize;
+}
+
+.status.pending {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.status.approved {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.status.rejected {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+/* 🔥 Action buttons */
+.action-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-btn.approve {
+  border-color: #22c55e;
+  color: #22c55e;
+}
+
+.action-btn.reject {
+  border-color: #ef4444;
+  color: #ef4444;
+}
