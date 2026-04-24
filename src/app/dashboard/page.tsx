@@ -5,6 +5,7 @@ import StatsCard from "@/components/dashboard/StatsCard";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { getToken } from "@/lib/auth";
+import { FiUsers, FiDollarSign, FiPlus } from "react-icons/fi";
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -28,12 +29,14 @@ export default function DashboardPage() {
           title="Total Staff"
           value="5"
           subtitle="5 active"
+         icon={<FiUsers />}
           color="bg-blue-500"
         />
         <StatsCard
           title="Today's Attendance"
           value="3"
           subtitle="60% present"
+            icon={<FiUsers />}
           color="bg-green-500"
         />
         <StatsCard

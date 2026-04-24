@@ -23,7 +23,7 @@ const menu = [
   { name: "Leave", path: "/leave", icon: FiClipboard },
   { name: "Performance", path: "/performance", icon: FiTrendingUp },
   { name: "Hiring", path: "/hiring", icon: FiUserPlus },
-  { name: "Departments", path: "/departments", icon: FiLayers },
+  { name: "Departments", path: "/department", icon: FiLayers },
   { name: "Reports", path: "/reports", icon: FiBarChart2 },
   { name: "Settings", path: "/settings", icon: FiSettings },
 ];
