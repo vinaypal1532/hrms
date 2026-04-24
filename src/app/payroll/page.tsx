@@ -1,8 +1,27 @@
+"use client";
 import { DropDown } from "@/components/DropDown";
 import StatCardGrid from "@/components/StatCardGrid";
-import React from "react";
+import React, { useState } from "react";
 
 const page = () => {
+  const [sMonth, setSMonth] = useState("");
+  const [sYear, setSYear] = useState("");
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const years = ["2024", "2025", "2026", "2027", "2028"];
   return (
     <div className="space-y-6">
       {/* HEADER */}
@@ -50,18 +69,25 @@ const page = () => {
       {/* TABLE CONTAINER */}
       <div className="bg-white rounded-2xl border border-gray-200 p-7">
         {/* FILTER BAR */}
-        <div className="flex items-center justify-between p-4 text-gray-500">
+        <div className="flex items-center gap-4 p-4 text-gray-500">
           {/* SEARCH */}
           {/* <DropDown title="" search="" /> */}
 
-          {/* DATE */}
-          <div className="ml-4">
-            <input
-              type="date"
-              className="border rounded-lg px-3 py-2 text-sm"
-              defaultValue="2026-03-28"
-            />
-          </div>
+          {/* Month */}
+          <DropDown
+            width={"w-55"}
+            search={sMonth}
+            setSearch={setSMonth}
+            list={months}
+          />
+
+          {/* Year */}
+          <DropDown
+            width={"w-32"}
+            search={sYear}
+            setSearch={setSYear}
+            list={years}
+          />
         </div>
 
         {/* TABLE */}
