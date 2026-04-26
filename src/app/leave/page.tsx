@@ -53,9 +53,7 @@ export default function LeavePage() {
       {/* 🔥 HEADER */}
       <div>
         <h1 className="text-2xl font-semibold">Leave Management</h1>
-        <p className="text-gray-500">
-          Manage employee leave requests
-        </p>
+        <p className="text-gray-500">Manage employee leave requests</p>
       </div>
 
       {/* 🔥 SUMMARY CARDS */}
@@ -77,19 +75,18 @@ export default function LeavePage() {
 
       {/* 🔥 TABLE CARD */}
       <div className="bg-white rounded-xl p-4">
-        
         {/* TABS */}
-        <div className="flex bg-gray-100 rounded-full p-1 w-fit mb-4">
+        <div className="flex bg-gray-100 rounded-full py-1 px-1 w-full mb-4">
           {tabs.map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-5 py-1 rounded-full text-sm capitalize transition
-                ${
-                  activeTab === tab
-                    ? "bg-white shadow text-black"
-                    : "text-gray-500"
-                }`}
+              className={`flex-1 py-2 rounded-full text-sm capitalize transition font-semibold
+        ${
+          activeTab === tab
+            ? "bg-white shadow text-black"
+            : "text-black opacity-70 hover:opacity-100"
+        }`}
             >
               {tab}
             </button>
@@ -115,7 +112,6 @@ export default function LeavePage() {
             <tbody>
               {filteredData.map((item) => (
                 <tr key={item.id} className="border-b">
-                  
                   {/* EMPLOYEE */}
                   <td className="py-3 flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-semibold">
@@ -127,17 +123,13 @@ export default function LeavePage() {
 
                     <div>
                       <p className="font-medium">{item.name}</p>
-                      <p className="text-gray-400 text-xs">
-                        {item.empId}
-                      </p>
+                      <p className="text-gray-400 text-xs">{item.empId}</p>
                     </div>
                   </td>
 
                   {/* TYPE */}
                   <td>
-                    <span className={`badge ${item.type}`}>
-                      {item.type}
-                    </span>
+                    <span className={`badge ${item.type}`}>{item.type}</span>
                   </td>
 
                   <td>{item.start}</td>
@@ -156,16 +148,11 @@ export default function LeavePage() {
                   <td className="flex gap-2">
                     {item.status === "pending" && (
                       <>
-                        <button className="action-btn approve">
-                          ✓
-                        </button>
-                        <button className="action-btn reject">
-                          ✕
-                        </button>
+                        <button className="action-btn approve">✓</button>
+                        <button className="action-btn reject">✕</button>
                       </>
                     )}
                   </td>
-
                 </tr>
               ))}
             </tbody>
