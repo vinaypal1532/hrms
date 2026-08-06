@@ -1,9 +1,12 @@
-// app/dashboard/layout.tsx
-
-import Sidebar from "@/components/layout/Sidebar";
 import Header from "@/components/layout/Header";
+import Sidebar from "@/components/layout/Sidebar";
+import React from "react";
 
-export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+export default function StaffLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <div className="min-h-screen flex flex-col bg-[#f8fafc]">
       <Header />

@@ -1,14 +1,16 @@
 // components/dashboard/StatsCard.tsx
-export default function StatsCard({ title, value, subtitle, color }: any) {
+export default function StatsCard({ title, value, subtitle, icon, color }: any) {
   return (
-    <div className="bg-white p-5 rounded-xl shadow-sm flex justify-between items-center">
-      <div>
-        <p className="text-gray-500 text-sm">{title}</p>
-        <h2 className="text-2xl font-bold">{value}</h2>
-        <p className="text-xs text-gray-400">{subtitle}</p>
+    <div className="bg-white p-6 rounded-2xl border border-gray-100 flex justify-between items-center shadow-sm">
+      <div className="flex flex-col">
+        <span className="text-gray-400 font-semibold text-[13px]">{title}</span>
+        <span className="text-3xl font-bold text-gray-900 mt-1">{value}</span>
+        <span className="text-[11px] text-gray-500 mt-1.5 font-medium">{subtitle}</span>
       </div>
 
-      <div className={`w-10 h-10 rounded-lg ${color}`} />
+      <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-white text-xl ${color} shrink-0`}>
+        {icon}
+      </div>
     </div>
   );
 }
