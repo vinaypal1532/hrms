@@ -11,7 +11,7 @@ interface StaffFormData {
   joiningDate: string;
 }
 
-interface StaffFormProps {
+interface AddFormProps {
   newStaff: StaffFormData;
   setNewStaff: React.Dispatch<React.SetStateAction<StaffFormData>>;
   onSubmit: () => void;
@@ -19,13 +19,13 @@ interface StaffFormProps {
   loading?: boolean;
 }
 
-export default function StaffForm({
+export default function AddForm({
   newStaff,
   setNewStaff,
   onSubmit,
   onClose,
   loading = false,
-}: StaffFormProps) {
+}: AddFormProps) {
   const handleChange = (
     field: keyof StaffFormData,
     value: string
@@ -37,14 +37,14 @@ export default function StaffForm({
   };
 
   const isFormValid =
-    newStaff.name.trim() !== "" &&
-    newStaff.email.trim() !== "" &&
-    newStaff.position.trim() !== "" &&
-    newStaff.joiningDate !== "";
+    newStaff.name.trim() &&
+    newStaff.email.trim() &&
+    newStaff.position.trim() &&
+    newStaff.joiningDate;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
-      <div className="bg-white rounded-2xl shadow-xl w-full max-w-4xl p-7 mx-4">
+      <div className="bg-white rounded-2xl shadow-xl w-full max-w-4xl p-7 mx-4 animate-in">
 
         {/* Modal Header */}
         <div className="flex items-center justify-between mb-6">
@@ -67,7 +67,7 @@ export default function StaffForm({
           </button>
         </div>
 
-        {/* Form Fields */}
+        {/* Form */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
 
           {/* Name */}
@@ -155,7 +155,7 @@ export default function StaffForm({
           </div>
         </div>
 
-        {/* Footer */}
+        {/* Modal Footer */}
         <div className="flex items-center justify-end gap-3 mt-7 pt-5 border-t border-gray-100">
 
           <button
@@ -181,3 +181,4 @@ export default function StaffForm({
     </div>
   );
 }
+

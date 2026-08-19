@@ -1,6 +1,6 @@
 "use client";
 
-import { loginUser, setToken } from "@/app/api/auth/auth";
+import { loginUser } from "@/app/api/auth/auth";
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -19,18 +19,19 @@ export default function LoginPage() {
 
     try {
       const result = await loginUser({ email: form.email, password: form.password });
-      if (result && result.token) { 
-        
+      if (result && result.token) {
         localStorage.setItem("token", result.token);
-        localStorage.setItem("userRole", result.user.role);
-        localStorage.setItem("userName", result.user.name);   
-        localStorage.setItem("userEmail", result.user.email); 
+        localStorage.setItem("userRole", result.user.roles?.[0] ?? "");
+        localStorage.setItem("userName", result.user.name);
+        localStorage.setItem("userEmail", result.user.email);
         toast.success("Login successful");
         router.push("/dashboard");
+      } else {
+        toast.error("Login failed: invalid response from server");
       }
-      
     } catch (error) {
-      toast.error("Login failed");
+      console.error("Login error:", error);
+      toast.error(error instanceof Error ? error.message : "Login failed");
     } finally {
       setLoading(false);
     }

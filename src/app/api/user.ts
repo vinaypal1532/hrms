@@ -39,7 +39,9 @@ export async function getAllUsers(token: string) {
       Authorization: `Bearer ${token}`,
     },
   });
+
   if (!res.ok) throw new Error("Failed to fetch users");
+
   return res.json();
 }
 

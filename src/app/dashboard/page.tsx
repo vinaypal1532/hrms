@@ -13,9 +13,24 @@ const recentStaff = [
 ];
 
 const recentAttendance = [
-  { name: "John Smith", date: "2026-03-28", time: "09:00 - 18:00", hours: "9h" },
-  { name: "Sarah Johnson", date: "2026-03-28", time: "09:15 - 18:30", hours: "9.25h" },
-  { name: "Michael Brown", date: "2026-03-28", time: "09:00 - 18:00", hours: "9h" },
+  {
+    name: "John Smith",
+    date: "2026-03-28",
+    time: "09:00 - 18:00",
+    hours: "9h",
+  },
+  {
+    name: "Sarah Johnson",
+    date: "2026-03-28",
+    time: "09:15 - 18:30",  
+    hours: "9.25h",
+  },
+  {
+    name: "Michael Brown",
+    date: "2026-03-28",
+    time: "09:00 - 18:00",
+    hours: "9h",
+  },
 ];
 
 interface DashboardApiResponse {
@@ -26,15 +41,17 @@ interface DashboardApiResponse {
 }
 
 export default function DashboardPage() {
+  const { data: response, loading } =
+    useFetchData<DashboardApiResponse>(getDashboardStats);
 
-  const { data: response, loading } = useFetchData<DashboardApiResponse>(getDashboardStats);
-  
   const totalStaffCount = response?.data?.totalUsers ?? 0;
-  
+
   return (
     <div className="max-w-6xl mx-auto space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-gray-900 leading-tight">Dashboard</h2>
+        <h2 className="text-2xl font-bold text-gray-900 leading-tight">
+          Dashboard
+        </h2>
         <p className="text-sm text-gray-500 mt-0.5">
           Welcome back! Here's what's happening today.
         </p>
@@ -42,10 +59,12 @@ export default function DashboardPage() {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-       <StatsCard
+        <StatsCard
           title="Total Staff"
           value={loading ? "..." : totalStaffCount.toString()}
-          subtitle={loading ? "Updating..." : `${totalStaffCount} active employees`}
+          subtitle={
+            loading ? "Updating..." : `${totalStaffCount} active employees`
+          }
           icon={<FiUsers />}
           color="bg-[#2563eb]"
         />
@@ -79,13 +98,18 @@ export default function DashboardPage() {
           <h3 className="text-sm font-bold text-gray-900 mb-5">Recent Staff</h3>
           <div className="divide-y divide-gray-100">
             {recentStaff.map((staff, idx) => (
-              <div key={idx} className="flex items-center justify-between py-3.5 first:pt-0 last:pb-0">
+              <div
+                key={idx}
+                className="flex items-center justify-between py-3.5 first:pt-0 last:pb-0"
+              >
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-xs bg-[#eff6ff] text-[#2563eb] border border-blue-100">
                     {staff.initial}
                   </div>
                   <div>
-                    <p className="text-sm font-bold text-gray-800">{staff.name}</p>
+                    <p className="text-sm font-bold text-gray-800">
+                      {staff.name}
+                    </p>
                     <p className="text-xs text-gray-500 mt-0.5">{staff.role}</p>
                   </div>
                 </div>
@@ -99,16 +123,25 @@ export default function DashboardPage() {
 
         {/* Recent Attendance */}
         <div className="bg-white border border-gray-100 p-6 rounded-2xl shadow-sm">
-          <h3 className="text-sm font-bold text-gray-900 mb-5">Recent Attendance</h3>
+          <h3 className="text-sm font-bold text-gray-900 mb-5">
+            Recent Attendance
+          </h3>
           <div className="divide-y divide-gray-100">
             {recentAttendance.map((record, idx) => (
-              <div key={idx} className="flex items-center justify-between py-3.5 first:pt-0 last:pb-0">
+              <div
+                key={idx}
+                className="flex items-center justify-between py-3.5 first:pt-0 last:pb-0"
+              >
                 <div>
-                  <p className="text-sm font-bold text-gray-800">{record.name}</p>
+                  <p className="text-sm font-bold text-gray-800">
+                    {record.name}
+                  </p>
                   <p className="text-xs text-gray-400 mt-0.5">{record.date}</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-sm font-bold text-gray-800">{record.time}</p>
+                  <p className="text-sm font-bold text-gray-800">
+                    {record.time}
+                  </p>
                   <p className="text-xs text-gray-400 mt-0.5">{record.hours}</p>
                 </div>
               </div>

@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3001/api";
+const API_URL = "http://127.0.0.1:5000/api";
 
 export type LoginPayload = {
   email: string;
@@ -11,20 +11,36 @@ export type RegisterPayload = {
   password: string;
 };
 
+const DEFAULT_FETCH_TIMEOUT = 15000;
+
 export async function loginUser(payload: LoginPayload) {
-  const res = await fetch(`${API_URL}/auth/login`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(payload),
-  });
+  const controller = new AbortController();
+  const timeoutId = window.setTimeout(() => controller.abort(), DEFAULT_FETCH_TIMEOUT);
 
-  if (!res.ok) {
-    throw new Error("Login failed");
+  try {
+    const res = await fetch(`${API_URL}/auth/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+      signal: controller.signal,
+    });
+
+    if (!res.ok) {
+      const errorText = await res.text();
+      throw new Error(`Login failed (${res.status}): ${errorText}`);
+    }
+
+    return res.json();
+  } catch (error) {
+    if (error instanceof DOMException && error.name === "AbortError") {
+      throw new Error("Login request timed out. Please check your backend and network connection.");
+    }
+    throw error;
+  } finally {
+    window.clearTimeout(timeoutId);
   }
-
-  return res.json();
 }
 
 export async function registerUser(payload: RegisterPayload) {
