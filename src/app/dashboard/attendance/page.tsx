@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
 import StatCardGrid from "@/components/StatCardGrid";
 import AttendanceTable from "@/components/attendance/AttendanceTable";
@@ -9,8 +8,6 @@ import AttendanceModal from "@/components/forms/AttendanceModal";
 import {
   AttendanceRecord,
   AttendanceSummary,
-  clearError,
-  clearSuccess,
 } from "@/features/attendance/attendanceSlice";
 import {
   fetchAttendanceRecords,
@@ -19,16 +16,6 @@ import {
   deleteAttendanceRecord,
   exportAttendance,
 } from "@/lib/attendanceAPI";
-
-type RootState = {
-  attendance: {
-    records: AttendanceRecord[];
-    summary: AttendanceSummary;
-    loading: boolean;
-    error: string | null;
-    success: boolean;
-  };
-};
 
 const mockEmployees = [
   { id: "1", name: "John Smith" },
@@ -50,16 +37,15 @@ export default function AttendancePage() {
   const [error, setError] = useState<string | null>(null);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingRecord, setEditingRecord] = useState<AttendanceRecord | null>(
-    null
-  );
+  const [editingRecord, setEditingRecord] = useState<AttendanceRecord | null>(null);
   const [searchValue, setSearchValue] = useState("");
   const [dateValue, setDateValue] = useState(
     new Date().toISOString().split("T")[0]
   );
   const [submitting, setSubmitting] = useState(false);
 
-  const token = typeof window !== "undefined" ? localStorage.getItem("token") || "" : "";
+  const token =
+    typeof window !== "undefined" ? localStorage.getItem("token") || "" : "";
 
   // Fetch attendance records
   const fetchRecords = async () => {
@@ -199,7 +185,7 @@ export default function AttendancePage() {
             Attendance Management
           </h2>
           <p className="text-gray-500 text-sm">
-            Track and manage staff attendance
+            Track and manually manage staff attendance
           </p>
         </div>
 
@@ -240,7 +226,7 @@ export default function AttendancePage() {
         />
         <StatCardGrid
           title="Avg Hours"
-          value={summary.avgHours}
+          value={`${summary.avgHours}h`}
           color="text-blue-500"
         />
       </div>

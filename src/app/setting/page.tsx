@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import {
   FiBell,
   FiBriefcase,
@@ -12,7 +13,19 @@ import {
 type Tab = "company" | "attendance" | "notifications" | "payroll";
 
 export default function SettingsPage() {
-  const [activeTab, setActiveTab] = useState<Tab>("payroll");
+  const router = useRouter();
+  const [userRole, setUserRole] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<Tab>("company");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedRole = localStorage.getItem("userRole") || "Staff";
+      setUserRole(storedRole);
+      if (storedRole !== "Admin") {
+        router.push("/dashboard");
+      }
+    }
+  }, [router]);
 
   const tabs = [
     { id: "company", label: "Company", icon: <FiBriefcase className="w-3.5 h-3.5" /> },
@@ -20,6 +33,25 @@ export default function SettingsPage() {
     { id: "notifications", label: "Notifications", icon: <FiBell className="w-3.5 h-3.5" /> },
     { id: "payroll", label: "Payroll", icon: <FiLock className="w-3.5 h-3.5" /> },
   ];
+
+  if (userRole === null) {
+    return (
+      <div className="flex items-center justify-center min-h-[400px]">
+        <p className="text-gray-500 text-sm">Loading settings...</p>
+      </div>
+    );
+  }
+
+  if (userRole !== "Admin") {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[400px] space-y-4">
+        <h2 className="text-xl font-bold text-red-600">Access Denied</h2>
+        <p className="text-gray-500 text-sm">
+          You do not have permission to access the System Settings page.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-6xl mx-auto space-y-6">

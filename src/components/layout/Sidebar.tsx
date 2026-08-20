@@ -18,6 +18,7 @@ import {
   FiBarChart2,
   FiSettings,
   FiChevronDown,
+  FiUser,
 } from "react-icons/fi";
 
 type MenuItem = {
@@ -48,7 +49,7 @@ const hrMenu: MenuItem[] = [
     name: "Attendance",
     path: "/dashboard/attendance",
     icon: FiClock,
-    roles: ["Admin", "Staff"],
+    roles: ["Admin", "Staff", "HR"],
   },
   {
     name: "Payroll",
@@ -60,13 +61,13 @@ const hrMenu: MenuItem[] = [
     name: "Leave",
     path: "/dashboard/leave",
     icon: FiCalendar,
-    roles: ["Admin", "Staff"],
+    roles: ["Admin", "Staff", "HR"],
   },
   {
     name: "Performance",
     path: "/dashboard/performance",
     icon: FiStar,
-    roles: ["Admin", "Staff"],
+    roles: ["Admin", "Staff", "HR"],
   },
   {
     name: "Hiring",
@@ -120,19 +121,31 @@ const standaloneMenu: MenuItem[] = [
     name: "Dashboard",
     path: "/dashboard",
     icon: FiHome,
-    roles: ["Admin", "Staff"],
+    roles: ["Admin", "Staff", "HR"],
   },
   {
     name: "Meetings",
     path: "/dashboard/meetings",
     icon: FiCalendar,
-    roles: ["Admin", "Staff"],
+    roles: ["Admin", "Staff", "HR"],
   },
   {
     name: "Timesheet",
     path: "/dashboard/timesheet",
     icon: FiFileText,
-    roles: ["Admin", "Staff"],
+    roles: ["Admin", "Staff", "HR"],
+  },
+  {
+    name: "Payslips",
+    path: "/dashboard/payslips",
+    icon: FiFileText,
+    roles: ["Admin", "Staff", "HR"],
+  },
+  {
+    name: "Profile",
+    path: "/dashboard/profile",
+    icon: FiUser,
+    roles: ["Admin", "Staff", "HR"],
   },
   {
     name: "Reports",
@@ -144,7 +157,7 @@ const standaloneMenu: MenuItem[] = [
     name: "Settings",
     path: "/dashboard/setting",
     icon: FiSettings,
-    roles: ["Admin", "Staff"],
+    roles: ["Admin"],
   },
 ];
 
